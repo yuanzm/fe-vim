@@ -87,7 +87,6 @@ def setFileLink():
 
     lnif(VIM_PATH + '/vimrc', HOME + '/.vimrctest');
     lnif(VIM_PATH, HOME + '/.vimtest');
-    lnif(VIM_PATH + '/others/tern-config', HOME + '/.tern-configtest');
     lnif(VIM_PATH + '/others/editorconfig', HOME + '/.editorconfigtest');
 
     success('setting up syslinks successfully!');
