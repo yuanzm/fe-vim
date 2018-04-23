@@ -1,0 +1,29 @@
+root = true
+
+[*.js]
+indent_style = space
+indent_size = 4
+
+[*.json]
+indent_style = space
+indent_size = 4
+
+[*.html]
+indent_style = space
+indent_size = 4
+
+[*.css]
+indent_style = space
+indent_size = 4
+
+[*.scss]
+indent_style = space
+indent_size = 4
+
+[*.vim]
+indent_style = space
+indent_size = 4
+
+[*.*]
+indent_style = space
+indent_size = 4
