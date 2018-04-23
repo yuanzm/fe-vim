@@ -12,7 +12,7 @@ bigvim
 
 2. 安装步骤
   ```
-  curl -O https://raw.githubusercontent.com/yuanzm/bigvim/master/install.py && python install.py
+  curl -O https://raw.githubusercontent.com/yuanzm/fe-vim/master/install.py && python install.py
   ```
 
 #### 选装
