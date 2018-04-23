@@ -12,7 +12,7 @@ HOME     = os.environ['HOME'];
 VIM_PATH = HOME + '/.fevim';
 APP_NAME = 'fevim';
 REQUIRE  = ['npm', 'node', 'git'];
-GIT_URL  = 'https://github.com/yuanzm/bigvim.git';
+GIT_URL  = 'https://github.com/yuanzm/fe-vim.git';
 
 # 打印关键信息
 def msg(message):
