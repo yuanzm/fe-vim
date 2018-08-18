@@ -7,18 +7,6 @@ let mapleader = ','
 let g:mapleader = ','
 let s:vim8 = has('patch-8.0.0039') && exists('*job_start')
 
-Plug 'dyng/ctrlsf.vim', {'on': '<Plug>CtrlSFVwordExec'}
-
-Plug 'rking/ag.vim'
-vmap <Leader>s <Plug>CtrlSFVwordExec
-let g:ctrlsf_ackprg = 'ag'
-
-" ----------------------------------------------------------------------------
-" ag.vim
-" ----------------------------------------------------------------------------
-nnoremap <Leader><Leader>a :Ag!<space>
-let g:ag_working_path_mode='r'
-
 "快速匹配() [] {} 等
 Plug 'tmhedberg/matchit'
 
@@ -36,7 +24,7 @@ Plug 'inside/vim-search-pulse'
 Plug 'unblevable/quick-scope'
 
 " JS语法提示
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-es2015-snippets'
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-es2015-snippets'
 
 " 自动补全元素标签
 Plug 'alvan/vim-closetag'
@@ -54,19 +42,19 @@ Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 " 多窗口模式下最大化(恢复)当前窗口
 Plug 'szw/vim-maximizer'
 
-Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim'
+"Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim'
 
 " theme
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
 
 " 搜索文件
 Plug 'ctrlpvim/ctrlp.vim'
 
 " 找到函数定义的地方
 Plug 'tacahiroy/ctrlp-funky'
-Plug 'j5shi/ctrlp_bdelete.vim'
+"Plug 'j5shi/ctrlp_bdelete.vim'
 
 " javascript
 Plug 'pangloss/vim-javascript'
@@ -89,19 +77,6 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
 " ----------------------------------------------------------------------------
-" tagbar
-" require ctags, jsctags
-" npm install -g git+https://github.com/ramitos/jsctags.git
-" ----------------------------------------------------------------------------
-let g:tagbar_type_javascript = {
-    \ 'ctagsbin' : 'jsctags'
-    \ }
-nnoremap <leader>t :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-let g:tagbar_width = 50
-let g:tagbar_ctags_bin='/usr/bin/ctags'
-
-" ----------------------------------------------------------------------------
 " ctrlp.vim
 " ----------------------------------------------------------------------------
 nnoremap <leader>m :CtrlPMRU<CR>
@@ -113,15 +88,7 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
-call ctrlp_bdelete#init()
-
-" ----------------------------------------------------------------------------
-" ctrlp-funky
-" Mapping: <Leader>fu
-" ----------------------------------------------------------------------------
-let g:ctrlp_funky_matchtype = 'path'
-let g:ctrlp_funky_syntax_highlight = 1
-nnoremap <Leader>fu :CtrlPFunky<Cr>
+"call ctrlp_bdelete#init()
 
 " ----------------------------------------------------------------------------
 " vim-airline
@@ -155,14 +122,6 @@ map <leader><space> :FixWhitespace<cr>
 nnoremap <tab> :MaximizerToggle<CR>
 
 " ----------------------------------------------------------------------------
-" vim-colors-solarized
-" ----------------------------------------------------------------------------
-let g:solarized_termcolors=16
-let g:solarized_termtrans=1
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-
-" ----------------------------------------------------------------------------
 " YouCompleteMe
 " ----------------------------------------------------------------------------
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -172,19 +131,10 @@ let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_semantic_triggers =  {
-            \   'c' : ['->', '.'],
-            \   'objc' : ['->', '.'],
-            \   'ocaml' : ['.', '#'],
-            \   'cpp,objcpp' : ['->', '.', '::'],
             \   'perl' : ['->'],
-            \   'php' : ['->', '::', '(', 'use ', 'namespace ', '\'],
             \   'cs,java,typescript,d,python,perl6,scala,vb,elixir,go' : ['.', 're!(?=[a-zA-Z]{3,4})'],
             \   'html': ['<', '"', '</', ' '],
             \   'vim' : ['re![_a-za-z]+[_\w]*\.'],
-            \   'ruby' : ['.', '::'],
-            \   'lua' : ['.', ':'],
-            \   'erlang' : [':'],
-            \   'haskell' : ['.', 're!.'],
             \   'scss,css': [ 're!^\s{2,4}', 're!:\s+' ],
             \ }
 
@@ -211,32 +161,4 @@ let g:ale_linters = {
 nmap <silent> <Leader>j <Plug>(ale_next_wrap)
 nmap <silent> <Leader>k <Plug>(ale_previous_wrap)
 
-" ----------------------------------------------------------------------------
-" syntastic
-" ----------------------------------------------------------------------------
-let g:syntastic_error_symbol='✘'
-let g:syntastic_warning_symbol='❗'
-let g:syntastic_style_error_symbol='»'
-let g:syntastic_style_warning_symbol='•'
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_highlighting = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_mode_map = {
-    \ "mode": "active",
-    \ "active_filetypes": [],
-    \ "passive_filetypes": ["java"] }
-
-" ----------------------------------------------------------------------------
-" tern_for_vim
-" ----------------------------------------------------------------------------
-let tern_show_signature_in_pum = 1
-let tern_show_argument_hints = 'on_hold'
-autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
-autocmd FileType javascript setlocal omnifunc=tern#Complete
-
-" ----------------------------------------------------------------------------
-" vim-autoformat
-"require: npm install -g js-beautify
-" ----------------------------------------------------------------------------
-autocmd FileType javascript,json,html,css,scss noremap <buffer>  <leader><leader>f :Autoformat<cr>
 
