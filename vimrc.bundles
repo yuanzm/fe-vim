@@ -1,4 +1,3 @@
-
 " ----------------------------------------------------------------------------
 " Vim-Plug:Plgin management and setting
 " ----------------------------------------------------------------------------
@@ -8,10 +7,20 @@ let mapleader = ','
 let g:mapleader = ','
 let s:vim8 = has('patch-8.0.0039') && exists('*job_start')
 
-Plug 'majutsushi/tagbar'
+Plug 'dyng/ctrlsf.vim', {'on': '<Plug>CtrlSFVwordExec'}
 
+Plug 'rking/ag.vim'
+vmap <Leader>s <Plug>CtrlSFVwordExec
+let g:ctrlsf_ackprg = 'ag'
+
+" ----------------------------------------------------------------------------
+" ag.vim
+" ----------------------------------------------------------------------------
+nnoremap <Leader><Leader>a :Ag!<space>
+let g:ag_working_path_mode='r'
+
+"快速匹配() [] {} 等
 Plug 'tmhedberg/matchit'
-Plug 'posva/vim-vue'
 
 " 开始标签和结束标签高亮
 Plug 'Valloric/MatchTagAlways'
@@ -19,12 +28,6 @@ Plug 'Valloric/MatchTagAlways'
 " 状态栏美化
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" 出现颜色值得时候自动展示对应的颜色
-Plug 'gorodinskiy/vim-coloresque'
-
-" 展示当前文件的Git状态信息
-Plug 'airblade/vim-gitgutter'
 
 " 搜索的时候高亮优化
 Plug 'inside/vim-search-pulse'
@@ -35,72 +38,39 @@ Plug 'unblevable/quick-scope'
 " JS语法提示
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-es2015-snippets'
 
-Plug 'godlygeek/tabular'
 " 自动补全元素标签
 Plug 'alvan/vim-closetag'
-Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-surround'
+
 " 消除多余空格
 Plug 'bronson/vim-trailing-whitespace'
-
 " 快速注释工具
 Plug 'scrooloose/nerdcommenter'
-
 " 识别编辑器配置文件
 Plug 'editorconfig/editorconfig-vim'
-
-" tools
 " 自动补全工具
 Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
-
 " 查看目录树
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-
-Plug 'ruanyl/vim-eslint', {'do': 'npm install'}
-Plug 'majutsushi/tagbar'
-Plug 'plasticboy/vim-markdown'
-Plug 'tpope/vim-obsession' | Plug 'dhruvasagar/vim-prosession'
 " 多窗口模式下最大化(恢复)当前窗口
 Plug 'szw/vim-maximizer'
 
-Plug 'thinca/vim-quickrun'
-Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
-Plug 'ruanyl/vim-fidget', {'do': 'npm install'}
-Plug 'MattesGroeger/vim-bookmarks'
-Plug 'moll/vim-bbye'
 Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim'
-Plug 'vim-scripts/BufOnly.vim'
 
 " theme
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 Plug 'morhetz/gruvbox'
 
-" search
 " 搜索文件
 Plug 'ctrlpvim/ctrlp.vim'
 
 " 找到函数定义的地方
 Plug 'tacahiroy/ctrlp-funky'
-
 Plug 'j5shi/ctrlp_bdelete.vim'
-Plug 'dyng/ctrlsf.vim', {'on': '<Plug>CtrlSFVwordExec'}
-Plug 'ggVGc/vim-fuzzysearch'
-Plug 'rking/ag.vim'
 
 " javascript
 Plug 'pangloss/vim-javascript'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
-Plug 'othree/javascript-libraries-syntax.vim'
-
-" CSS
-if count(g:bigvim_minor_plugins, 'css')
-    Plug 'ruanyl/vim-caniuse', {'on': 'Caniuse', 'for': ['css', 'html']}
-    "Plug 'hail2u/vim-css3-syntax'
-    Plug 'cakebaker/scss-syntax.vim'
-    Plug 'JulesWang/css.vim'
-    "au BufRead,BufNewFile *.scss set filetype=scss.css
-endif
 
 "Load local plugins
 if filereadable(expand("~/.vim/vimrc.bundles.local"))
@@ -154,22 +124,6 @@ let g:ctrlp_funky_syntax_highlight = 1
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 
 " ----------------------------------------------------------------------------
-" ctrlsf.vim
-" ----------------------------------------------------------------------------
-vmap <Leader>s <Plug>CtrlSFVwordExec
-
-" ----------------------------------------------------------------------------
-" ag.vim
-" ----------------------------------------------------------------------------
-nnoremap <Leader><Leader>a :Ag!<space>
-let g:ag_working_path_mode='r'
-
-" ----------------------------------------------------------------------------
-" vim-fuzzysearch
-" ----------------------------------------------------------------------------
-nnoremap <leader><leader>/ :FuzzySearch<cr>
-
-" ----------------------------------------------------------------------------
 " vim-airline
 " ----------------------------------------------------------------------------
 let g:airline_powerline_fonts = 1
@@ -194,18 +148,6 @@ endif
 " Mapping: <leader><space>
 " ----------------------------------------------------------------------------
 map <leader><space> :FixWhitespace<cr>
-
-" ----------------------------------------------------------------------------
-" vim-bookmarks
-" ----------------------------------------------------------------------------
-let g:bookmark_no_default_key_mappings = 1
-nnoremap <Leader><Leader>m :BookmarkToggle<CR>
-nnoremap <Leader>i :BookmarkAnnotate<CR>
-nnoremap <Leader>a :BookmarkShowAll<CR>
-nnoremap <Leader>j :BookmarkNext<CR>
-nnoremap <Leader>k :BookmarkPrev<CR>
-nnoremap <Leader>c :BookmarkClear<CR>
-nnoremap <Leader>x :BookmarkClearAll<CR>
 
 " ----------------------------------------------------------------------------
 " vim-maximizer
@@ -247,22 +189,6 @@ let g:ycm_semantic_triggers =  {
             \ }
 
 " ----------------------------------------------------------------------------
-" delimitMate
-" ----------------------------------------------------------------------------
-let delimitMate_matchpairs = "(:),[:],{:}"
-let delimitMate_expand_cr = 1
-
-" ----------------------------------------------------------------------------
-" tabular
-" ----------------------------------------------------------------------------
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:<CR>
-vmap <Leader>a: :Tabularize /:<CR>
-nmap <Leader>a" :Tabularize /"<CR>
-vmap <Leader>a" :Tabularize /"<CR>
-
-" ----------------------------------------------------------------------------
 " vim-closetag
 " ----------------------------------------------------------------------------
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml,*.js,*.tsx,*.vue,*.wxml"
@@ -301,13 +227,6 @@ let g:syntastic_mode_map = {
     \ "passive_filetypes": ["java"] }
 
 " ----------------------------------------------------------------------------
-" vim-markdown
-" ----------------------------------------------------------------------------
-let g:vim_markdown_folding_disabled=1
-let g:vim_markdown_no_default_key_mappings=1
-let g:vim_markdown_frontmatter=1
-
-" ----------------------------------------------------------------------------
 " tern_for_vim
 " ----------------------------------------------------------------------------
 let tern_show_signature_in_pum = 1
@@ -316,32 +235,8 @@ autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 
 " ----------------------------------------------------------------------------
-" padawan.vim
-" Generate Index: :call padawan#GenerateIndex()
-" Start Server: :call padawan#StartServer()
-" Stop Server: :call padawan#StopServer()
-" Restart Server: :call padawan#RestartServer()
-" cd ~/.vim/bundle/padawan.vim/padawan.php && composer install
-" ----------------------------------------------------------------------------
-
-" ----------------------------------------------------------------------------
-" gundo.vim
-" ----------------------------------------------------------------------------
-nnoremap <leader>h :GundoToggle<CR>
-let g:gundo_auto_preview = 0
-
-" ----------------------------------------------------------------------------
 " vim-autoformat
 "require: npm install -g js-beautify
 " ----------------------------------------------------------------------------
 autocmd FileType javascript,json,html,css,scss noremap <buffer>  <leader><leader>f :Autoformat<cr>
 
-" ----------------------------------------------------------------------------
-" vim-bbye
-" ----------------------------------------------------------------------------
-nnoremap qq :Bdelete<cr>
-
-" ----------------------------------------------------------------------------
-" BufOnly.vim
-" ----------------------------------------------------------------------------
-nnoremap <silent> qo :BufOnly<CR>
