@@ -85,8 +85,8 @@ def initVimGitRepo():
 def setFileLink():
     info('setting up syslinks...');
 
-    lnif(VIM_PATH + '/vimrc', HOME + '/.vimrctest');
-    lnif(VIM_PATH, HOME + '/.vimtest');
+    lnif(VIM_PATH + '/vimrc', HOME + '/.vimrc');
+    lnif(VIM_PATH, HOME + '/.vim');
     lnif(VIM_PATH + '/others/editorconfig', HOME + '/.editorconfigtest');
 
     success('setting up syslinks successfully!');
@@ -95,9 +95,9 @@ def setFileLink():
 def initVimEnv():
     info('start to init vim environment...');
 
-    shutil.copyfile(HOME + '/.vimtest/vimrc.local.example', HOME + '/.vimtest/vimrc.local');
-    shutil.copyfile(HOME + '/.vimtest/vimrc.bundles.local.example', HOME + '/.vimtest/vimrc.bundles.local');
-    shutil.copyfile(HOME + '/.vimtest/vimrc.before.example', HOME + '/.vimtest/vimrc.before');
+    shutil.copyfile(HOME + '/.vim/vimrc.local.example', HOME + '/.vim/vimrc.local');
+    shutil.copyfile(HOME + '/.vim/vimrc.bundles.local.example', HOME + '/.vim/vimrc.bundles.local');
+    shutil.copyfile(HOME + '/.vim/vimrc.before.example', HOME + '/.vim/vimrc.before');
 
     success('vim environment has beed inited successfully');
 
@@ -105,7 +105,7 @@ def initVimEnv():
 def installVimPlug():
     info('installing Vim-plug');
 
-    ret = subprocess.call('curl -fLo ~/.vimtest/autoload/plug.vim --create-dirs \
+    ret = subprocess.call('curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim', shell = True);
 
     success("successfully installed vim-plug");
