@@ -1,4 +1,4 @@
-bigvim
+fe-vim
 ======================
 
 ### 配置步骤
@@ -47,11 +47,6 @@ bigvim
 3. 安装powerline美化字体:
   推荐[Monaco for Powerline](https://gist.github.com/ruanyl/ea38de37683951c20bf5/raw/5fa73caa4af86285f11539a6b4b6c26cfca2c04b/Monaco%20for%20Powerline.otf) 或者去[Lokaltog/powerline-fonts](https://github.com/Lokaltog/powerline-fonts) 自行寻找
 
-### 内置主题
-molokai主题
-
-![molokai](https://raw.githubusercontent.com/ruanyl/bigvim/gh-pages/images/molokai.png)
-
 
 ### 常用自定义快捷键(`<leader>`映射为`,`)
 
@@ -99,13 +94,6 @@ L    到行尾
 
 ![thenerdtree](https://raw.githubusercontent.com/ruanyl/bigvim/gh-pages/images/nerdtree.gif)
 
-
-#### [majutsushi/tagbar](https://github.com/majutsushi/tagbar)
-浏览taglist
-
-```
-,t
-```
 
 #### [kien/ctrlp.vim](https://github.com/kien/ctrlp.vim)
 快速文件搜索+导航

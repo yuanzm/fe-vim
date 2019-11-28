@@ -14,9 +14,11 @@ filetype plugin indent on
 syntax enable
 syntax on
 
-"colorscheme gruvbox
+colorscheme gruvbox
+let g:gruvbox_contrast_dark="hard"
+
 "colorscheme solarized
-colorscheme molokai
+"colorscheme molokai
 "colorscheme desert
 
 imap kj <Esc>
